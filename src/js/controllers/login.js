@@ -5,7 +5,7 @@
  * @name dripdrankdrunkApp.controller:LoginCtrl
  * @description
  * # LoginCtrl
- * Controller of the dripdrankdrunkApp
+ * Controller of the deadpeople
  */
 angular.module('deadpeople')
     .controller('LoginCtrl', ['$scope', 'AuthService', '$state', function ($scope, AuthService, $state) {
@@ -59,6 +59,6 @@ angular.module('deadpeople')
         $scope.authenticate = function (fields) {
             if (!$('#login').form('is valid'))
                 return;
-            $state.go('loggedin');
+            $state.go('homepage');
         }
     }]);

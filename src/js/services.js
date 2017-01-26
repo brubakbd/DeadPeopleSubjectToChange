@@ -32,6 +32,23 @@
             });
         };
     }]);
+    app.service('DataService',['$https', function($http){
+        var self = this;
+
+        self.getNames = function(searchTerm, callback){
+            var pkt = {c_name:searchTerm};
+            $http({
+                method: 'GET',
+                url: host + 'search/' + searchTerm,
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json"
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        }
+    }]);
 
 })();
 

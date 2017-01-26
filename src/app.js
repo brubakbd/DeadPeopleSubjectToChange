@@ -38,12 +38,26 @@
                 controller: 'LoginCtrl',
                 controllerAs: 'login'
             })
-            .state('loggedin', {
-                url: '/',
+            .state('homepage', {
+                url: '/homepage',
                 abstract: false,
-                templateUrl: '../views/loggedin.html',
-                controller: 'LoggedinCtrl',
-                controllerAs: 'loggedin'
+                templateUrl: '../views/homepage.html',
+                controller: 'HomepageCtrl',
+                controllerAs: 'homepage'
+            })
+            .state('search', {
+                url: '/search',
+                abstract: false,
+                templateUrl: '../views/search.html',
+                controller: 'SearchCtrl',
+                controllerAs: 'search'
+            })
+            .state('create', {
+                url: '/create',
+                abstract: false,
+                templateUrl: '../views/create.html',
+                controller: 'CreateCtrl',
+                controllerAs: 'create'
             });
 
     });
