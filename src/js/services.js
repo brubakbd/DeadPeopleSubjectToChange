@@ -4,7 +4,7 @@
 (function () {
     var app = angular.module('DataManager', []);
 
-    var host = "http://23.99.27.197:5000/";
+    var host = "http://137.112.227.144:5000/";
     var token;
     app.service('AuthService', ['$http', function ($http) {
         var self = this;
@@ -32,14 +32,14 @@
             });
         };
     }]);
-    app.service('DataService',['$https', function($http){
+    app.service('DataService', ['$http', function ($http) {
         var self = this;
 
         self.getNames = function(searchTerm, callback){
             var pkt = {c_name:searchTerm};
             $http({
                 method: 'GET',
-                url: host + 'search/' + searchTerm,
+                url: host + 'cape_search?c_name=' + searchTerm,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json"

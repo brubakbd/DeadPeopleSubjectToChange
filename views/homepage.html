@@ -27,17 +27,18 @@
     <div class="vertical-spacer"></div>
     <div class="ui text container">
         <h1>What deaths would you like to find?</h1>
-        <div class="ui fluid action input">
-            <input type="text" placeholder="Search..." id="searchBar">
-            <button class="ui action icon button" ng-click="search()">
-                <i class="search icon"></i>
-            </button>
-        </div>
+        <form class="ui form" id="search">
+            <div class="field">
+                <input type="text" placeholder="Search..." name="searchTerm">
+            </div>
+            <button class="ui button" type="submit">Search</button>
+            <div class="ui error message"></div>
+        </form>
     </div>
     <div class="vertical-spacer"></div>
     <ul>
-    <li ng-repeat=" name in names" ng-bind-html-unsafe="name.text" >
-        {{ name.text }}
-    </li>
+        <li ng-repeat=" name in names" ng-bind-html-unsafe="name.p_name">
+            {{ name.p_name }}
+        </li>
     </ul>
 </div>
