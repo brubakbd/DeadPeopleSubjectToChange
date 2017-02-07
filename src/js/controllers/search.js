@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name dripdrankdrunkApp.controller:SearchCtrl
+ * @name deadpeoplesubjecttochange.controller:SearchCtrl
  * @description
- * # LoginCtrl
+ * # SearchCtrl
  * Controller of the deadpeople
  */
 angular.module('deadpeople')

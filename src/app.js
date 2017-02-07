@@ -58,6 +58,13 @@
                 templateUrl: '../views/create.html',
                 controller: 'CreateCtrl',
                 controllerAs: 'create'
+            })
+            .state('character', {
+                url: '/character',
+                abstract: false,
+                templateUrl: '../views/character.html',
+                controller: 'CharacterCtrl',
+                controllerAs: 'character'
             });
 
     });

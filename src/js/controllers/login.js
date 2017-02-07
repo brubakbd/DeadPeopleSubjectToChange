@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc function
- * @name dripdrankdrunkApp.controller:LoginCtrl
+ * @name deadpeoplesubjecttochange.controller:LoginCtrl
  * @description
  * # LoginCtrl
  * Controller of the deadpeople

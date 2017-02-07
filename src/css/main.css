@@ -51,6 +51,12 @@
     pointer-events: none;
     z-index:9999;
 }
+.ui.medium.image
+   {
+        width: auto;
+        height: 200px;
+        font-size: 1rem;
+   }
 /*.angular-centered {*/
     /*display: table-cell;*/
     /*vertical-align: middle;*/

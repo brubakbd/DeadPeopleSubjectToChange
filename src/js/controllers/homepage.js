@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name dripdrankdrunkApp.controller:HomepageCtrl
+ * @name deadpeoplesubjecttochange.controller:HomepageCtrl
  * @description
- * # LoginCtrl
+ * # HomepageCtrl
  * Controller of the deadpeople
  */
 angular.module('deadpeople')
@@ -12,7 +12,6 @@ angular.module('deadpeople')
         $scope.names = [];
 
         var homePageSetup = function () {
-            console.log('asdf');
             $('#search')
                 .form({
                     fields: {

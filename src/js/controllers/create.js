@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name dripdrankdrunkApp.controller:CreateCtrl
+ * @name deadpeoplesubjecttochange.controller:CreateCtrl
  * @description
- * # LoginCtrl
+ * # CreateCtrl
  * Controller of the deadpeople
  */
 angular.module('deadpeople')
