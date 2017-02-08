@@ -12,6 +12,9 @@ angular.module('deadpeople')
         $scope.names = [];
 
         var homePageSetup = function () {
+            $('.ui.dropdown')
+                .dropdown()
+            ;
             $('#search')
                 .form({
                     fields: {

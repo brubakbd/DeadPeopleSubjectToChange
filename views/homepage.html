@@ -29,6 +29,19 @@
         <h1>What deaths would you like to find?</h1>
         <form class="ui form" id="search">
             <div class="field">
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="searchType">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Type of search</div>
+                    <div class="menu">
+                        <div class="item" data-value="0">Character</div>
+                        <div class="item" data-value="1">Series</div>
+                        <div class="item" data-value="2">Universe</div>
+                        <div class="item" data-value="3">Publisher</div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
                 <input type="text" placeholder="Search..." name="searchTerm">
             </div>
             <button class="ui button" type="submit">Search</button>
