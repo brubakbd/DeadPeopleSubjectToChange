@@ -10,7 +10,7 @@
         var self = this;
 
         self.login = function (username, password, callback) {
-            var pkt = { email: username, password: password };
+            var pkt = { email: username, password: CryptoJS.SHA256(password)};
             $http({
                 method: 'POST',
                 url: host + "login",
@@ -33,7 +33,7 @@
         };
 
         self.newUser = function (username, pwd) {
-            var pkt = { email: username, password: pwd };
+            var pkt = { email: username, password: CryptoJS.SHA256(pwd)};
             $http({
                 method: 'POST',
                 url: host + "newUser",

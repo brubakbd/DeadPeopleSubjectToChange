@@ -11,7 +11,8 @@ angular.module('deadpeople')
     .controller('LoginCtrl', ['$scope', 'AuthService', '$state', function ($scope, AuthService, $state) {
 
         var loginPageSetup = function () {
-
+            console.log("Started");
+            console.log(CryptoJS.SHA256("MEssage"));
             $('#login')
                 .form({
                     fields: {
