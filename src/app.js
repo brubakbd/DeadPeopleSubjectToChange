@@ -12,7 +12,7 @@
                         break;
                     case 'ALREADY_AUTH':
                         //go to the dash board
-                        $state.go('user.history');
+                        $state.go('homepage');
                         break;
                     default:
                         // set the error object on the error state and go there

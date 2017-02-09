@@ -4,13 +4,13 @@
 (function () {
     var app = angular.module('DataManager', []);
 
-    var host = "http://137.112.227.144:5000/";
+    var host = "http://137.112.227.210:5000/";
     var token;
     app.service('AuthService', ['$http', function ($http) {
         var self = this;
 
         self.login = function (username, password, callback) {
-            var pkt = { email: username, password: CryptoJS.SHA256(password)};
+            var pkt = { username: username, password: password};
             $http({
                 method: 'POST',
                 url: host + "login",
@@ -33,7 +33,7 @@
         };
 
         self.newUser = function (username, pwd) {
-            var pkt = { email: username, password: CryptoJS.SHA256(pwd)};
+            var pkt = { username: username, password: CryptoJS.SHA256(pwd)};
             $http({
                 method: 'POST',
                 url: host + "newUser",
@@ -46,7 +46,7 @@
                 setToken('auth-token', response.data.access_token);
                 $http.defaults.headers.common.Authorization = 'Bearer ' + response.data.access_token;
                 token = 'Bearer ' + response.data.access_token;
-                $state.go('user.settings');
+                $state.go('homepage');
             }, function errorCallback(response) {
                 console.log('error occured: ', response);
                 callback('', response);
