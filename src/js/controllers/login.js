@@ -56,9 +56,36 @@ angular.module('deadpeople')
             loginPageSetup();
         });
 
-        $scope.authenticate = function (fields) {
-            if (!$('#login').form('is valid'))
+        var stopButtons = function () {
+            $('.ui.button').addClass('disabled');
+        };
+
+        var freeButtons = function () {
+            $('.ui.button').removeClass('disabled');
+        };
+
+        $scope.register = function () {
+            if(!$('#login').form('is valid'))
                 return;
-            $state.go('homepage');
+            stopButtons();
+            var fields = $('#login').form('get values');
+            AuthService.newUser(fields.username, fields.password);
+        };
+
+        $scope.authenticate = function (fields) {
+            if(!$('#login').form('is valid'))
+                return;
+            stopButtons();
+            var fields = $('#login').form('get values');
+            AuthService.login(fields.username, fields.password, function (token, err) {
+                if (err) {
+                    $('.ui.error.message').html(
+                        '<ui class="list"><li>Invalid Username or Password</li></ui>').show();
+                    freeButtons();
+                } else {
+                    $state.go('user.history');
+                }
+            });
         }
+
     }]);

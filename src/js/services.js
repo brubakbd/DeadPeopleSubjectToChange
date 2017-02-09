@@ -31,6 +31,27 @@
                 //UPDATE STUFF FOR INCORRECT USER NAME PASSWORD VS SERVER ERROR
             });
         };
+
+        self.newUser = function (username, pwd) {
+            var pkt = { email: username, password: pwd };
+            $http({
+                method: 'POST',
+                url: host + "newUser",
+                data: pkt,
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json"
+                }
+            }).then(function (response) {
+                setToken('auth-token', response.data.access_token);
+                $http.defaults.headers.common.Authorization = 'Bearer ' + response.data.access_token;
+                token = 'Bearer ' + response.data.access_token;
+                $state.go('user.settings');
+            }, function errorCallback(response) {
+                console.log('error occured: ', response);
+                callback('', response);
+            });
+        };
     }]);
     app.service('DataService', ['$http', function ($http) {
         var self = this;
