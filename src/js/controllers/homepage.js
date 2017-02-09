@@ -44,7 +44,10 @@ angular.module('deadpeople')
                 });
         }
 
-
+        $scope.logout = function(){
+            clearTokens();
+            $state.go('home');
+        }
 
 
 
