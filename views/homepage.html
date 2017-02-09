@@ -31,10 +31,10 @@
                     <i class="dropdown icon"></i>
                     <div class="default text">Type of search</div>
                     <div class="menu">
-                        <div class="item" data-value="0">Character</div>
-                        <div class="item" data-value="1">Series</div>
-                        <div class="item" data-value="2">Universe</div>
-                        <div class="item" data-value="3">Publisher</div>
+                        <div class="item" data-value="character">Character</div>
+                        <div class="item" data-value="series">Series</div>
+                        <div class="item" data-value="universe">Universe</div>
+                        <div class="item" data-value="publisher">Publisher</div>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
     <div class="vertical-spacer"></div>
     <ul>
         <li ng-repeat=" name in names" ng-bind-html-unsafe="name.p_name">
-            {{ name.p_name }}
+            {{ name.P_name }}
         </li>
     </ul>
 </div>

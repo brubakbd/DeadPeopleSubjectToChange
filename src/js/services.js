@@ -6,11 +6,11 @@
 
     var host = "http://137.112.227.210:5000/";
     var token;
-    app.service('AuthService', ['$http', function ($http) {
+    app.service('AuthService', ['$http', '$state', function ($http, $state) {
         var self = this;
 
         self.login = function (username, password, callback) {
-            var pkt = { username: username, password: password};
+            var pkt = { username: username, password: CryptoJS.SHA256(password)};
             $http({
                 method: 'POST',
                 url: host + "login",
@@ -36,7 +36,7 @@
             var pkt = { username: username, password: CryptoJS.SHA256(pwd)};
             $http({
                 method: 'POST',
-                url: host + "newUser",
+                url: host + "createUser",
                 data: pkt,
                 headers: {
                     'Content-Type': "application/json",
@@ -49,18 +49,16 @@
                 $state.go('homepage');
             }, function errorCallback(response) {
                 console.log('error occured: ', response);
-                callback('', response);
             });
         };
     }]);
     app.service('DataService', ['$http', function ($http) {
         var self = this;
 
-        self.getNames = function(searchTerm, callback){
-            var pkt = {c_name:searchTerm};
+        self.search = function(searchTerm, type, callback){
             $http({
                 method: 'GET',
-                url: host + 'cape_search?c_name=' + searchTerm,
+                url: host + 'search?name=' + searchTerm+'&type='+type,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json"
@@ -68,7 +66,7 @@
             }).then(function(response){
                 callback(response.data);
             });
-        }
+        };
     }]);
 
 })();

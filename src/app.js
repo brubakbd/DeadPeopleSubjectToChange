@@ -50,14 +50,7 @@
                 abstract: false,
                 templateUrl: '../views/homepage.html',
                 controller: 'HomepageCtrl',
-                controllerAs: 'homepage',
-                resolve: {
-                    security: ['$q', function ($q) {
-                      if (!hasAccess()) {
-                        return $q.reject({ code: 'NOT_AUTH' });
-                      }
-                    }]
-                }
+                controllerAs: 'homepage'
             })
             .state('search', {
                 url: '/search',

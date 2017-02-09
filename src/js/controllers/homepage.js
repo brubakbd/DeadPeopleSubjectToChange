@@ -31,7 +31,8 @@ angular.module('deadpeople')
                     inline: true,
                     onSuccess: function (event, fields) {
                         console.log(fields.searchTerm);
-                        DataService.getNames(fields.searchTerm, function (response) {
+                        console.log($('.ui.dropdown').dropdown('get value'));
+                        DataService.search(fields.searchTerm, $('.ui.dropdown').dropdown('get value'), function (response) {
                             $scope.names = response;
                             console.log('set response to '+response);
                         });
