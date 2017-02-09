@@ -36,56 +36,112 @@
                 abstract: false,
                 templateUrl: '../views/login.html',
                 controller: 'LoginCtrl',
-                controllerAs: 'login'
+                controllerAs: 'login',
+                resolve: {
+                    security: ['$q', function ($q) {
+                        if (hasAccess()) {
+                            return $q.reject({code: 'ALREADY_AUTH'});
+                        }
+                    }]
+                }
             })
             .state('homepage', {
                 url: '/homepage',
                 abstract: false,
                 templateUrl: '../views/homepage.html',
                 controller: 'HomepageCtrl',
-                controllerAs: 'homepage'
+                controllerAs: 'homepage',
+                resolve: {
+                    security: ['$q', function ($q) {
+                      if (!hasAccess()) {
+                        return $q.reject({ code: 'NOT_AUTH' });
+                      }
+                    }]
+                }
             })
             .state('search', {
                 url: '/search',
                 abstract: false,
                 templateUrl: '../views/search.html',
                 controller: 'SearchCtrl',
-                controllerAs: 'search'
+                controllerAs: 'search',
+                resolve: {
+                    security: ['$q', function ($q) {
+                      if (!hasAccess()) {
+                        return $q.reject({ code: 'NOT_AUTH' });
+                      }
+                    }]
+                }
             })
             .state('create', {
                 url: '/create',
                 abstract: false,
                 templateUrl: '../views/create.html',
                 controller: 'CreateCtrl',
-                controllerAs: 'create'
+                controllerAs: 'create',
+                resolve: {
+                    security: ['$q', function ($q) {
+                      if (!hasAccess()) {
+                        return $q.reject({ code: 'NOT_AUTH' });
+                      }
+                    }]
+                }
             })
             .state('series', {
                 url: '/series',
                 abstract: false,
                 templateUrl: '../views/series.html',
                 controller: 'SeriesCtrl',
-                controllerAs: 'series'
+                controllerAs: 'series',
+                resolve: {
+                    security: ['$q', function ($q) {
+                      if (!hasAccess()) {
+                        return $q.reject({ code: 'NOT_AUTH' });
+                      }
+                    }]
+                }
             })
             .state('universe', {
                 url: '/universe',
                 abstract: false,
                 templateUrl: '../views/universe.html',
                 controller: 'UniverseCtrl',
-                controllerAs: 'universe'
+                controllerAs: 'universe',
+                resolve: {
+                    security: ['$q', function ($q) {
+                      if (!hasAccess()) {
+                        return $q.reject({ code: 'NOT_AUTH' });
+                      }
+                    }]
+                }
             })
             .state('publisher', {
                 url: '/publisher',
                 abstract: false,
                 templateUrl: '../views/publisher.html',
                 controller: 'PublisherCtrl',
-                controllerAs: 'publisher'
+                controllerAs: 'publisher',
+                resolve: {
+                    security: ['$q', function ($q) {
+                      if (!hasAccess()) {
+                        return $q.reject({ code: 'NOT_AUTH' });
+                      }
+                    }]
+                }
             })
             .state('character', {
                 url: '/character',
                 abstract: false,
                 templateUrl: '../views/character.html',
                 controller: 'CharacterCtrl',
-                controllerAs: 'character'
+                controllerAs: 'character',
+                resolve: {
+                    security: ['$q', function ($q) {
+                      if (!hasAccess()) {
+                        return $q.reject({ code: 'NOT_AUTH' });
+                      }
+                    }]
+                }
             });
 
     });
