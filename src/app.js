@@ -73,6 +73,13 @@
                 controller: 'UniverseCtrl',
                 controllerAs: 'universe'
             })
+            .state('publisher', {
+                url: '/publisher',
+                abstract: false,
+                templateUrl: '../views/publisher.html',
+                controller: 'PublisherCtrl',
+                controllerAs: 'publisher'
+            })
             .state('character', {
                 url: '/character',
                 abstract: false,
