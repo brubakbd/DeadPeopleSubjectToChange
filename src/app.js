@@ -66,6 +66,13 @@
                 controller: 'SeriesCtrl',
                 controllerAs: 'series'
             })
+            .state('universe', {
+                url: '/universe',
+                abstract: false,
+                templateUrl: '../views/universe.html',
+                controller: 'UniverseCtrl',
+                controllerAs: 'universe'
+            })
             .state('character', {
                 url: '/character',
                 abstract: false,
