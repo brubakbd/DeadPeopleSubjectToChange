@@ -59,6 +59,13 @@
                 controller: 'CreateCtrl',
                 controllerAs: 'create'
             })
+            .state('series', {
+                url: '/series',
+                abstract: false,
+                templateUrl: '../views/series.html',
+                controller: 'SeriesCtrl',
+                controllerAs: 'series'
+            })
             .state('character', {
                 url: '/character',
                 abstract: false,
