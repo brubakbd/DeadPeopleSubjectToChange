@@ -10,6 +10,10 @@
 angular.module('deadpeople')
     .controller('HomepageCtrl', ['$scope', '$state', 'DataService', function ($scope, $state, DataService) {
         $scope.names = [];
+        $scope.character=false;
+        $scope.series=false;
+        $scope.universe=false;
+        $scope.publisher=false;
 
         var homePageSetup = function () {
             $('.ui.dropdown')
