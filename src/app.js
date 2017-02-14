@@ -92,7 +92,8 @@
                         return $q.reject({ code: 'NOT_AUTH' });
                       }
                     }]
-                }
+                },
+                params: { name: null,}
             })
             .state('universe', {
                 url: '/universe',
@@ -106,7 +107,8 @@
                         return $q.reject({ code: 'NOT_AUTH' });
                       }
                     }]
-                }
+                },
+                params: { name: null,}
             })
             .state('publisher', {
                 url: '/publisher',
@@ -120,7 +122,8 @@
                         return $q.reject({ code: 'NOT_AUTH' });
                       }
                     }]
-                }
+                },
+                params: { name: null,}
             })
             .state('character', {
                 url: '/character',
@@ -128,13 +131,7 @@
                 templateUrl: '../views/character.html',
                 controller: 'CharacterCtrl',
                 controllerAs: 'character',
-                resolve: {
-                    security: ['$q', function ($q) {
-                      if (!hasAccess()) {
-                        return $q.reject({ code: 'NOT_AUTH' });
-                      }
-                    }]
-                }
+                params: { id: null,}
             });
 
     });

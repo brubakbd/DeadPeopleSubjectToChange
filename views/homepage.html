@@ -48,8 +48,28 @@
     <div class="vertical-spacer"></div>
     <ul>
         <li ng-repeat=" name in names" ng-bind-html-unsafe="name.p_name">
-            {{ name.P_name }}
-            {{ name.U_name }}
+            <div class="ui text container">
+                <div class="ui fluid card" ng-if= "character">
+                    <div class="content">
+                        <a ui-sref="character({id: {{ name.ID }} })">{{ name.P_name }} AKA {{ name.C_name }}</a>
+                    </div>
+                </div>
+                <div class="ui fluid card" ng-if= "series">
+                    <div class="content">
+                        <a ui-sref="series({id: {{ name.S_name }} })">{{ name.S_name }}</a>
+                    </div>
+                </div>
+                <div class="ui fluid card" ng-if= "universe">
+                    <div class="content">
+                        <a ui-sref="universe({id: {{ name.U_name }} })">{{ name.U_name }}</a>
+                    </div>
+                </div>
+                <div class="ui fluid card" ng-if= "publisher">
+                    <div class="content">
+                        <a ui-sref="character({id: {{ name.P_name }} })">{{ name.P_name }}</a>
+                    </div>
+                </div>
+            </div>
         </li>
     </ul>
 </div>
