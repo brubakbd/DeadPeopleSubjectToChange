@@ -46,30 +46,28 @@
         </form>
     </div>
     <div class="vertical-spacer"></div>
-    <ul>
-        <li ng-repeat=" name in names" ng-bind-html-unsafe="name.p_name">
-            <div class="ui text container">
-                <div class="ui fluid card" ng-if= "character">
-                    <div class="content">
-                        <a ui-sref="character({id: {{ name.ID }} })">{{ name.P_name }} AKA {{ name.C_name }}</a>
-                    </div>
-                </div>
-                <div class="ui fluid card" ng-if= "series">
-                    <div class="content">
-                        <a ui-sref="series({name: {{ name.S_name }} })">{{ name.S_name }}</a>
-                    </div>
-                </div>
-                <div class="ui fluid card" ng-if= "universe">
-                    <div class="content">
-                        <a ui-sref="universe({name: {{ name.U_name }} })">{{ name.U_name }}</a>
-                    </div>
-                </div>
-                <div class="ui fluid card" ng-if= "publisher">
-                    <div class="content">
-                        <a ui-sref="character({name: {{ name.P_name }} })">{{ name.P_name }}</a>
-                    </div>
+    <div class="ui-one-cards">
+        <div class="ui text container">
+            <div class="ui fluid card" ng-if= "character" ng-repeat=" name in names" ng-bind-html-unsafe="name.P_name">
+                <div class="content">
+                    <a ui-sref="character({id: {{ name.ID }} })">{{ name.P_name }} AKA {{ name.C_name }}</a>
                 </div>
             </div>
-        </li>
-    </ul>
+            <div class="ui fluid card" ng-if= "series" ng-repeat=" name in names" ng-bind-html-unsafe="name.S_name">
+                <div class="content">
+                    <a ui-sref="series({name: {{ name.S_name }} })">{{ name.S_name }}</a>
+                </div>
+            </div>
+            <div class="ui fluid card" ng-if= "universe" ng-repeat=" name in names" ng-bind-html-unsafe="name.U_name">
+                <div class="content">
+                    <a ui-sref="universe({name: {{ name.U_name }} })">{{ name.U_name }}</a>
+                </div>
+            </div>
+            <div class="ui fluid card" ng-if= "publisher" ng-repeat=" name in names" ng-bind-html-unsafe="name.P_name">
+                <div class="content">
+                    <a ui-sref="character({name: {{ name.P_name }} })">{{ name.P_name }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
