@@ -146,13 +146,87 @@
             });   
         };
         self.createRating = function(killID, val, callback){
-            var pkt = {Username:user, KID:klilID, Value:val, type:'publisher'};
+            var pkt = {Username:user, KID:klilID, Value:val, type:'rating'};
             $http({
                 method: 'GET',
                 url: host + 'create',
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json"
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        };
+
+
+
+        
+        self.deleteChar = function(charID, callback){
+            var pkt = {delID:charID, type:'cape'};
+            $http({
+                method: 'GET',
+                url: host + 'delete',
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        };
+        self.deleteSeries = function(sname, callback){
+            var pkt = {S_name:sname, type:'series'};
+            $http({
+                method: 'GET',
+                url: host + 'delete',
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        };
+        self.deleteUniverse = function(name, callback){
+            var pkt = {U_name:name, type:'universe'};
+            $http({
+                method: 'GET',
+                url: host + 'delete',
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        };
+        self.deletePublisher = function(name, callback){
+            var pkt = {P_name:name, type:'publisher'};
+            $http({
+                method: 'GET',
+                url: host + 'delete',
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        };
+        self.deleteKill = function(name, callback){
+            var pkt = {KID:name, type:'kills'};
+            $http({
+                method: 'GET',
+                url: host + 'delete',
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
                 }
             }).then(function(response){
                 callback(response.data);
