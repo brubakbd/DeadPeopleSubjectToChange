@@ -36,7 +36,7 @@ angular.module('deadpeople')
                     onSuccess: function (event, fields) {
                         console.log(fields.searchTerm);
                         console.log($('.ui.dropdown').dropdown('get value'));
-                        $scope.character = $('.ui.dropdown').dropdown('get value') == 'character';
+                        $scope.character = $('.ui.dropdown').dropdown('get value') == 'cape';
                         $scope.series = $('.ui.dropdown').dropdown('get value') == 'series';
                         $scope.universe = $('.ui.dropdown').dropdown('get value') == 'universe';
                         $scope.publisher = $('.ui.dropdown').dropdown('get value') == 'publisher';
