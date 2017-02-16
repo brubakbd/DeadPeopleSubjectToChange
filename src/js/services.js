@@ -4,7 +4,7 @@
 (function () {
     var app = angular.module('DataManager', []);
 
-    var host = "http://137.112.227.210:5000/";
+    var host = "http://137.112.137.116:5000/";
     var token;
     app.service('AuthService', ['$http', '$state', function ($http, $state) {
         var self = this;

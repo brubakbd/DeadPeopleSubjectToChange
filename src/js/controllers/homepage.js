@@ -60,7 +60,7 @@ angular.module('deadpeople')
 
 
 
-            $scope.$on('$viewContentLoaded', function () {
-                homePageSetup();
-            });
+        $scope.$on('$viewContentLoaded', function () {
+            homePageSetup();
+        });
         }]);

@@ -19,4 +19,98 @@
             </div>
         </div>
     </div>
+    <div class=vertical-spacer/>
+    <div class=vertical-spacer/>
+    <div class="ui top attached tabular menu">
+        <a class="item active" data-tab="character">Character</a>
+        <a class="item" data-tab="series">Series</a>
+        <a class="item" data-tab="universe">Universe</a>
+        <a class="item" data-tab="publisher">Publisher</a>
+        <a class="item" data-tab="death">Death</a>
+    </div>
+    <div class="ui bottom attached tab segment active" data-tab="character">
+        <form class="ui form" id="charForm">
+            <div class="field">
+                <label>Personal Name</label>
+                <input type="text" placeholder="Personal Name" name="pname">
+            </div>
+            <div class="field">
+                <label>Cape Name</label>
+                <input type="text" placeholder="Cape Name" name="cname">
+            </div>
+            <div class="field">
+                <label>Series</label>
+                <input type="text" placeholder="Series" name="sname">
+            </div>
+            <button class="ui button" type="submit">Create</button>
+        </form>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="series">
+        <form class="ui form" id="seriesForm">
+            <div class="field">
+                <label>Series</label>
+                <input type="text" placeholder="Series" name="sname">
+            </div>
+            <div class="field">
+                <label>Universe</label>
+                <input type="text" placeholder="Universe" name="uname">
+            </div>    
+            <button class="ui button" type="submit">Create</button>        
+        </form>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="universe">
+        <form class="ui form" id="universeForm">
+            <div class="field">
+                <label>Universe</label>
+                <input type="text" placeholder="Universe" name="uname">
+            </div>            
+            <div class="field">
+                <label>Publisher</label>
+                <input type="text" placeholder="Publisher" name="pname">
+            </div>
+            <div class="field">
+                <label>Size</label>
+                <input type="text" placeholder="Size" name="size">
+            </div>
+            <div class="field">
+                <label>Location</label>
+                <input type="text" placeholder="Locatoin" name="location">
+            </div>
+            <button class="ui button" type="submit">Create</button>
+        </form>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="publisher">
+        <form class="ui form" id="publisherForm">        
+            <div class="field">
+                <label>Publisher</label>
+                <input type="text" placeholder="Publisher" name="pname">
+            </div>
+            <div class="field">
+                <label>Historical Names(Comma separated)</label>
+                <input type="text" placeholder="Historical Names" name="histNames">
+            </div>
+            <button class="ui button" type="submit">Create</button>
+        </form>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="death">
+        <form class="ui form" id="deathForm">        
+            <div class="field">
+                <label>Killer</label>
+                <input type="text" placeholder="Killer" name="killerName">
+            </div>
+            <div class="field">
+                <label>Killee</label>
+                <input type="text" placeholder="Killee" name="killedName">
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <input type="text" placeholder="Description" name="desc">
+            </div>
+            <div class="field">
+                <label>Issue Number</label>
+                <input type="text" placeholder="Issue Number" name="issNum">
+            </div>
+            <button class="ui button" type="submit">Create</button>
+        </formdiv>
+    </div>
 </div>
