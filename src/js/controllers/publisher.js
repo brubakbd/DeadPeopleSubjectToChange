@@ -24,6 +24,11 @@ angular.module('deadpeople')
                             $scope.imgurl = response[0].Img_URL;
                             $scope.histName = response[0].H_name;
                         });
+                        
+            DataService.search($stateParams.name, 'byPub', function(response){
+                $scope.serieses = response.serieses;
+                $scope.universes = response.universes;
+            });
 
             
         }
