@@ -11,7 +11,8 @@
         var self = this;
 
         self.login = function (username, password, callback) {
-            var pkt = { username: username, password: CryptoJS.SHA256(password)};
+            var pkt = { username: username, password: CryptoJS.SHA1(password).toString()};
+            console.log(pkt);
             $http({
                 method: 'POST',
                 url: host + "login",
@@ -36,7 +37,10 @@
         };
 
         self.newUser = function (username, pwd) {
-            var pkt = { username: username, password: CryptoJS.SHA256(pwd)};
+            console.log("asdfasdfadsf");
+            console.log(CryptoJS.SHA256(pwd).toString());
+            var pkt = { username: username, password: CryptoJS.SHA256(pwd).toString()};
+            console.log(pkt);
             $http({
                 method: 'POST',
                 url: host + "createUser",
@@ -74,8 +78,9 @@
         self.createChar = function(Pname, Cname,img, callback){
             var pkt = {P_name:Pname, C_name:Cname, Img_URL:img, type:'cape'};
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: host + 'create',
+                data: pkt,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json",
@@ -88,8 +93,9 @@
         self.createSeries = function(Sname, Uname, Pname, img, callback){
             var pkt = {S_name:Sname, U_name:Uname, P_name:Pname, Img_URL:img, type:'series'};
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: host + 'create',
+                data: pkt,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json",
@@ -102,8 +108,9 @@
         self.createUniverse = function(Uname, size, Pname, location, img, callback){
             var pkt = {U_name:Uname, Size:size, P_name:Pname, Location:location, Img_URL:img, type:'universe'};
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: host + 'create',
+                data: pkt,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json",
@@ -116,8 +123,9 @@
         self.createPublisher = function(Pname, Hname, img, callback){
             var pkt = {P_name:Pname, H_name:Hname, Img_URL:img, type:'publisher'};
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: host + 'create',
+                data: pkt,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json",
@@ -127,30 +135,28 @@
                 callback(response.data);
             });
         };
-        self.createDeath = function(KillerName, KilledName, img, iss, desc, callback){
+        self.createDeath = function(KillerName, KilledName, iss, desc, callback){
             var rName ='';
-            search(KillerName, 'cape',function(responseR){
-                search(KilledName, 'cape',function(responseD){
-                    var pkt = {KillerID:responseR.ID, KilledID:responseD.ID, type:'kills'};
-                        $http({
-                            method: 'GET',
-                            url: host + 'create',
-                            headers: {
-                                'Content-Type': "application/json",
-                                'Accept': "application/json",
-                                'Authorization': getToken('auth-token')
-                            }
-                        }).then(function(response){
-                            callback(response.data);
-                        });
-                });
-            });   
+            var pkt = {KillerID:KillerName, KilledID:KilledName, Issue:iss, Dsc:desc, type:'kills'};
+            $http({
+                method: 'POST',
+                url: host + 'create',
+                data: pkt,
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
         };
         self.createRating = function(killID, val, callback){
             var pkt = {Username:user, KID:klilID, Value:val, type:'rating'};
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: host + 'create',
+                data: pkt,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json"
@@ -162,8 +168,9 @@
         self.createCharSeries = function(sname, cid, callback){
             var pkt = {S_name:sname, C_ID:cid, type:'charSeries'};
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: host + 'create',
+                data: pkt,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json",
@@ -180,8 +187,9 @@
         self.deleteChar = function(charID, callback){
             var pkt = {delID:charID, type:'cape'};
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: host + 'delete',
+                data: pkt,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json",
@@ -194,8 +202,9 @@
         self.deleteSeries = function(sname, callback){
             var pkt = {S_name:sname, type:'series'};
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: host + 'delete',
+                data: pkt,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json",
@@ -208,8 +217,9 @@
         self.deleteUniverse = function(name, callback){
             var pkt = {U_name:name, type:'universe'};
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: host + 'delete',
+                data: pkt,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json",
@@ -222,8 +232,9 @@
         self.deletePublisher = function(name, callback){
             var pkt = {P_name:name, type:'publisher'};
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: host + 'delete',
+                data: pkt,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json",
@@ -235,9 +246,11 @@
         };
         self.deleteKill = function(name, callback){
             var pkt = {KID:name, type:'kills'};
+            console.log(pkt);
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: host + 'delete',
+                data: pkt,
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json",

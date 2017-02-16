@@ -10,7 +10,7 @@
                 <h2 class="heading brand">DPStC</h2>
             </div>
             <div class="item">
-                <div class="ui inverted basic button" ng-click="goCreate()">Create</div>
+                <div class="ui inverted basic button" ng-if="role" ng-click="goCreate()">Create</div>
             </div>
             <div class="right menu">
                 <div class="item">
@@ -29,7 +29,7 @@
     <img class="ui medium centered image" src="{{imgurl}}">
     <div class=vertical-half-spacer/>
     <div class="center">
-        <h3>Publisher: {{pubname}}, Series: {{seriesName}}</h3>
+        <h3>Publisher: {{pubname}}, Series: {{seriesname}}</h3>
     </div>
     <div class="ui relaxed grid">
         <div class="row">
@@ -40,14 +40,15 @@
                     <div class="ui text container">
                         <div class="ui fluid card" ng-repeat=" death in deaths" ng-bind-html-unsafe="death.C_name">
                             <div class="content">
-                                <button class="ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="deleteDeath(death.ID)"> Delete </button>
-                                <p><b>Killed by:</b> {{death.C_name}}</p>
+                                <button class="mini ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="deleteDeath(death.Kill_ID)"> Delete </button>
+                                <p><b>Killed by:</b> {{death.Killer_Name}}</p>
                                 <p><b>In issue:</b> {{death.Issue}}</p>
-                                <p><b>Description:</b> {{death.Dsc}}</p>
-                                <div class="extra">
+                                <p><b>Description:</b> {{death.dsc}}</p>
+                                <!--<div class="extra">
                                     <b>Rating:</b>
-                                    <div class="ui star rating" data-rating="{{death.rating}}" data-max-rating="5"></div>
-                                </div>
+                                    <div class="ui star rating" data-rating="4" data-max-rating="5"></div>
+                                </div>-->
+                                <p><b>Rating: </b> {{death.Rating}}/5</p>
                             </div>
                         </div>
                     </div> 
@@ -60,14 +61,15 @@
                     <div class="ui text container">
                         <div class="ui fluid card" ng-repeat=" death in kills" ng-bind-html-unsafe="death.C_name">
                             <div class="content">
-                                <button class="ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="deleteDeath(death.ID)"> Delete </button>
-                                <p><b>Killed by:</b> {{death.C_name}}</p>
+                                <button class="mini ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="deleteDeath(death.Kill_ID)"> Delete </button>
+                                <p><b>Killed:</b> {{death.Killed_Name}}</p>
                                 <p><b>In issue:</b> {{death.Issue}}</p>
-                                <p><b>Description:</b> {{death.Dsc}}</p>
-                                <div class="extra">
+                                <p><b>Description:</b> {{death.dsc}}</p>
+                                <!--<div class="extra">
                                     <b>Rating:</b>
-                                    <div class="ui star rating" data-rating="{{death.rating}}" data-max-rating="5"></div>
-                                </div>
+                                    <div class="ui star rating" data-rating="4" data-max-rating="5" id="rate"></div>
+                                </div>-->
+                                <p><b>Rating: </b> {{death.Rating}}/5</p>
                             </div>
                         </div>
                     </div>

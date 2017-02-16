@@ -15,16 +15,21 @@ angular.module('deadpeople')
         $scope.imgurl = '';
         $scope.characters = [];
         $scope.role = getRole() == 'admin';
-        
         $scope.goCreate = function(){
-            if($scope.role == 'admin'){
+            if($scope.role){
                 $state.go('create');
             }
         }
         $scope.delete = function(){
+            console.log($scope.sname);
             DataService.deleteSeries($scope.sname, function(response){
                 console.log(response);
+                $state.go('homepage');
             });
+        }
+        $scope.logout = function(){
+            clearTokens();
+            $state.go('home');
         }
         var seriesSetup = function(){
             console.log($stateParams.name);

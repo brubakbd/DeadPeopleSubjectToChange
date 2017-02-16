@@ -10,7 +10,7 @@
                 <h2 class="heading brand">DPStC</h2>
             </div>
             <div class="item">
-                <div class="ui inverted basic button" ng-click="goCreate()">Create</div>
+                <div class="ui inverted basic button" ng-if="role" ng-click="goCreate()">Create</div>
             </div>
             <div class="right menu">
                 <div class="item">
@@ -51,12 +51,12 @@
     <div class="center">
         <h1>{{ pname }}</h1>
         <img class="ui centered medium image" src= "{{ imgurl }}">
-        <h4>{{ histNames }}</h4>
+        <h4>{{ histName }}</h4>
     </div>
-    <div class="ui link cards">
+    <!--<div class="ui link cards">
         <div class="card" ng-repeat=" series in serieses" ng-bind-html-unsafe="series.S_name">
             <div class="image">
-                <img src="{{series.imgurl}}" title="" style="">
+                <img src="{{series.Img_URL}}" title="" style="">
             </div>
             <div class="content">
                 <div class="header">{{series.S_name}}</div>
@@ -64,13 +64,56 @@
         </div>
     </div>
     <div class="ui link cards">
-        <div class="card" ng-repeat=" univeres in universes" ng-bind-html-unsafe="universe.U_name">
+        <div class="card" ng-repeat=" universe in universes" ng-bind-html-unsafe="universe.U_name">
             <div class="image">
-                <img src="{{universe.imgurl}}" title="" style="">
+                <img src="{{universe.Img_URL}}" title="" style="">
             </div>
             <div class="content">
                 <div class="header">{{universe.U_name}}</div>
             </div>
+        </div>
+    </div>-->
+    <div class="ui relaxed grid">
+        <div class="row">
+            
+            <div class="eight wide column">
+                <h2>Series</h2>
+                <div class="ui one cards">
+                    <div class="ui text container">
+                        <div class="ui fluid card" ng-repeat=" series in seriesList" ng-bind-html-unsafe="series.S_name">
+                            <div class="content">
+                                <!--<div class="image">
+                                    <img src="{{series.Img_URL}}" title="" style="">
+                                </div>-->
+                                <img class="ui medium image" src="{{series.Img_URL}}">
+                                <div class="content">
+                                    <div class="header">{{series.S_name}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="eight wide column">
+                <h2>Universes</h2>
+                <div class="ui one cards">
+                    <div class="ui text container">
+                        <div class="ui fluid card" ng-repeat=" universe in universeList" ng-bind-html-unsafe="universe.U_name">
+                            <div class="content">
+                                <!--<div class="image">
+                                    <img src="{{universe.Img_URL}}" title="" style="">
+                                </div>-->
+                                <img class="ui medium image" src="{{universe.Img_URL}}">
+                                <div class="content">
+                                    <div class="header">{{universe.U_name}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>

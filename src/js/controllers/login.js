@@ -12,7 +12,7 @@ angular.module('deadpeople')
 
         var loginPageSetup = function () {
             console.log("Started");
-            console.log(CryptoJS.SHA256("MEssage"));
+            console.log(CryptoJS.SHA256("a").toString());
             $('#login')
                 .form({
                     fields: {

@@ -50,7 +50,14 @@
                 abstract: false,
                 templateUrl: '../views/homepage.html',
                 controller: 'HomepageCtrl',
-                controllerAs: 'homepage'
+                controllerAs: 'homepage',
+                resolve: {
+                    security: ['$q', function ($q) {
+                      if (!hasAccess()) {
+                        return $q.reject({ code: 'NOT_AUTH' });
+                      }
+                    }]
+                }
             })
             .state('search', {
                 url: '/search',
@@ -81,7 +88,7 @@
                 }
             })
             .state('series', {
-                url: '/series',
+                url: '/series:name?',
                 abstract: false,
                 templateUrl: '../views/series.html',
                 controller: 'SeriesCtrl',
@@ -96,7 +103,7 @@
                 params: { name: null,}
             })
             .state('universe', {
-                url: '/universe',
+                url: '/universe:name?',
                 abstract: false,
                 templateUrl: '../views/universe.html',
                 controller: 'UniverseCtrl',
@@ -111,7 +118,7 @@
                 params: { name: null,}
             })
             .state('publisher', {
-                url: '/publisher',
+                url: '/publisher:name?',
                 abstract: false,
                 templateUrl: '../views/publisher.html',
                 controller: 'PublisherCtrl',
@@ -126,7 +133,7 @@
                 params: { name: null,}
             })
             .state('character', {
-                url: '/character',
+                url: '/character:name?',
                 abstract: false,
                 templateUrl: '../views/character.html',
                 controller: 'CharacterCtrl',

@@ -15,6 +15,11 @@ angular.module('deadpeople')
         $scope.universe=false;
         $scope.publisher=false;
 
+        $scope.goCreate = function(){
+            if($scope.role){
+                $state.go('create');
+            }
+        }
         var homePageSetup = function () {
             $('.ui.dropdown')
                 .dropdown()
@@ -42,7 +47,7 @@ angular.module('deadpeople')
                         $scope.publisher = $('.ui.dropdown').dropdown('get value') == 'publisher';
                         DataService.search(fields.searchTerm, $('.ui.dropdown').dropdown('get value'), function (response) {
                             $scope.names = response;
-                            console.log('set response to '+response);
+                            console.log(response);
                         });
                     },
                     onFailure: function (formErrors, fields) {

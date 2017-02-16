@@ -10,7 +10,7 @@
                 <h2 class="heading brand">DPStC</h2>
             </div>
             <div class="item">
-                <div class="ui inverted basic button" ng-click="goCreate()">Create</div>
+                <div class="ui inverted basic button" ng-if="role" ng-click="goCreate()">Create</div>
             </div>
             <div class="right menu">
                 <div class="item">
@@ -50,22 +50,22 @@
         <div class="ui text container">
             <div class="ui fluid card" ng-if= "character" ng-repeat=" name in names" ng-bind-html-unsafe="name.P_name">
                 <div class="content">
-                    <a ui-sref="character({id: {{ name.ID }} })">{{ name.P_name }} AKA {{ name.C_name }}</a>
+                    <a ui-sref="character({name: '{{ name.C_name }}' })">{{ name.P_name }} AKA {{ name.C_name }}</a>
                 </div>
             </div>
             <div class="ui fluid card" ng-if= "series" ng-repeat=" name in names" ng-bind-html-unsafe="name.S_name">
                 <div class="content">
-                    <a ui-sref="series({name: {{ name.S_name }} })">{{ name.S_name }}</a>
+                    <a ui-sref="series({name: '{{ name.S_name }}' })">{{ name.S_name }}</a>
                 </div>
             </div>
             <div class="ui fluid card" ng-if= "universe" ng-repeat=" name in names" ng-bind-html-unsafe="name.U_name">
                 <div class="content">
-                    <a ui-sref="universe({name: {{ name.U_name }} })">{{ name.U_name }}</a>
+                    <a ui-sref="universe({name: '{{ name.U_name }}' })">{{ name.U_name }}</a>
                 </div>
             </div>
             <div class="ui fluid card" ng-if= "publisher" ng-repeat=" name in names" ng-bind-html-unsafe="name.P_name">
                 <div class="content">
-                    <a ui-sref="character({name: {{ name.P_name }} })">{{ name.P_name }}</a>
+                    <a ui-sref="publisher({name: '{{ name.P_name }}' })">{{ name.P_name }}</a>
                 </div>
             </div>
         </div>

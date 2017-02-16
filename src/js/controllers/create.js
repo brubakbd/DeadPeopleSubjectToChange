@@ -12,14 +12,18 @@ angular.module('deadpeople')
         $scope.response = '';
 
         $scope.goCreate = function(){
-            if($scope.role == 'admin'){
+            if($scope.role){
                 $state.go('create');
             }
         }
-        
+        $scope.logout = function(){
+            clearTokens();
+            $state.go('home');
+        }
+
         var createPageSetup = function(){
             $('.menu .item')
-                .tab()
+                .tab()                                                                                                    
             ;
 
             $('#charForm')
@@ -58,8 +62,8 @@ angular.module('deadpeople')
                         if (event) {
                             event.preventDefault();
                         }
-                        DataService.createChar(pname,cname,img,function(response){
-                            $scope.response = 'Successfully created ' + cname;
+                        DataService.createChar(fields.pname,fields.cname,fields.img,function(response){
+                            $scope.response = 'Successfully created ' + fields.cname;
                         });
                         return false;
                     },
@@ -114,8 +118,8 @@ angular.module('deadpeople')
                         if (event) {
                             event.preventDefault();
                         }
-                        DataService.createSeries(sname,uname,pname,img,function(response){
-                            $scope.response = 'Successfully created ' + sname;
+                        DataService.createSeries(fields.sname,fields.uname,fields.pname,fields.img,function(response){
+                            $scope.response = 'Successfully created ' + fields.sname;
                         });
                         return false;
                     },
@@ -179,8 +183,8 @@ angular.module('deadpeople')
                         if (event) {
                             event.preventDefault();
                         }
-                        DataService.createUniverse(uname,size,pname,location,img,function(response){
-                            $scope.response = 'Successfully created ' + uname;
+                        DataService.createUniverse(fields.uname,fields.size,fields.pname,fields.location,fields.img,function(response){
+                            $scope.response = 'Successfully created ' + fields.uname;
                         });
                         return false;
                     },
@@ -217,8 +221,8 @@ angular.module('deadpeople')
                         if (event) {
                             event.preventDefault();
                         }
-                        DataService.createPublisher(pname,histNames,img,function(response){
-                            $scope.response = 'Successfully created ' + pname;
+                        DataService.createPublisher(fields.pname,fields.histNames,fields.img,function(response){
+                            $scope.response = 'Successfully created ' + fields.pname;
                         });
                         return false;
                     },
@@ -255,9 +259,13 @@ angular.module('deadpeople')
                         if (event) {
                             event.preventDefault();
                         }
-                        DataService.createCharSeries(char,series,function(response){
-                            $scope.response = 'Successfully created ' + char +'-' + series + ' relationship';
+                        DataService.search(fields.char,'cape',function(resp){
+                            console.log(resp);
+                            DataService.createCharSeries(fields.series,resp[0].ID,function(response){
+                                $scope.response = 'Successfully created ' + fields.char +'-' + fields.series + ' relationship';
+                            });
                         });
+                        
                         return false;
                     },
                     onFailure: function (formErrors, fields) {
@@ -302,9 +310,14 @@ angular.module('deadpeople')
                         if (event) {
                             event.preventDefault();
                         }
-                        DataService.createDeath(killerName,killedName,img,issNum,desc,function(response){
-                            $scope.response = 'Successfully created ' + cname;
+                        DataService.search(fields.killerName, 'cape', function(killerResp){
+                            DataService.search(fields.killedName, 'cape', function(killedResp){
+                                DataService.createDeath(killerResp[0].ID,killedResp[0].ID,fields.issNum,fields.desc,function(response){
+                                    $scope.response = 'Successfully created the kill between ' + fields.killerName + ' and ' + fields.killedName;
+                                });
+                            });
                         });
+                        
                         return false;
                     },
                     onFailure: function (formErrors, fields) {

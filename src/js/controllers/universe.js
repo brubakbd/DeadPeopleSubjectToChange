@@ -18,15 +18,20 @@ angular.module('deadpeople')
         $scope.role = getRole() == 'admin';
 
         $scope.goCreate = function(){
-            if($scope.role == 'admin'){
+            if($scope.role){
                 $state.go('create');
             }
         }
 
         $scope.delete = function(){
-            DataService.deleteUniverse($scope.uname, function(response){
+            DataService.deleteUniverse($scope.name, function(response){
                 console.log(response);
+                $state.go('homepage');
             });
+        }
+        $scope.logout = function(){
+            clearTokens();
+            $state.go('home');
         }
 
         var universeSetup = function(){
@@ -40,7 +45,7 @@ angular.module('deadpeople')
                             $scope.loc = response[0].Location;
                             $scope.imgurl = response[0].Img_URL;
                         });
-            DataService.search($stateParams.name, 'charBySeries', function(response){
+            DataService.search($stateParams.name, 'seriesByUniverse', function(response){
                 $scope.serieses = response;
             });
 

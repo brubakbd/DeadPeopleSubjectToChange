@@ -10,7 +10,7 @@
                 <h2 class="heading brand">DPStC</h2>
             </div>
             <div class="item">
-                <div class="ui inverted basic button" ng-click="goCreate()">Create</div>
+                <div class="ui inverted basic button" ng-if="role" ng-click="goCreate()">Create</div>
             </div>
             <div class="right menu">
                 <div class="item">
@@ -40,11 +40,10 @@
         <h4>{{ uname }}</h4>
         <h4>{{ pname }}</h4>
     </div>
+    <div class=vertical-spacer/>
     <div class="ui link cards">
         <div class="card" ng-repeat=" character in characters" ng-bind-html-unsafe="character.C_name">
-            <div class="image">
-                <img src="{{character.imgurl}}" title="" style="">
-            </div>
+            <img class="ui medium image" src="{{ character.Img_URL }}">
             <div class="content">
                 <div class="header">{{character.C_name}}</div>
             </div>

@@ -10,7 +10,7 @@
                 <h2 class="heading brand">DPStC</h2>
             </div>
             <div class="item">
-                <div class="ui inverted basic button" ng-click="goCreate()">Create</div>
+                <div class="ui inverted basic button" ng-if="role" ng-click="goCreate()">Create</div>
             </div>
             <div class="right menu">
                 <div class="item">
@@ -39,15 +39,13 @@
     <div class="center">
         <h1>{{ name }}</h1>
         <img class="ui centered medium image" src= "{{ imgurl }}">
-        <h4>{{ pub }}</h4>
-        <h4>{{ size }}</h4>
-        <h4>{{ loc }}</h4>
+        <h4>Publisher: {{ pub }}</h4>
+        <h4>Size: {{ size }}</h4>
+        <h4>Location: {{ loc }}</h4>
     </div>
     <div class="ui link cards">
         <div class="card" ng-repeat=" series in serieses" ng-bind-html-unsafe="series.S_name">
-            <div class="image">
-                <img src="{{series.imgurl}}" title="" style="">
-            </div>
+            <img class="ui medium image" src= "{{ series.Img_URL }}">
             <div class="content">
                 <div class="header">{{series.S_name}}</div>
             </div>
