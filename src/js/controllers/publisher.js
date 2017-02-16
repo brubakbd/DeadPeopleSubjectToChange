@@ -16,6 +16,12 @@ angular.module('deadpeople')
         $scope.universes = [];
         $scope.role = getRole()=='admin';
 
+        $scope.goCreate = function(){
+            if($scope.role == 'admin'){
+                $state.go('create');
+            }
+        }
+
         $scope.delete = function(){
             DataService.deletePublisher($scope.pname, function(response){
                 console.log(response);

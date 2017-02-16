@@ -40,7 +40,7 @@
                     <div class="ui text container">
                         <div class="ui fluid card" ng-repeat=" death in deaths" ng-bind-html-unsafe="death.C_name">
                             <div class="content">
-                                <button class="ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="delete(death.ID)"> Delete </button>
+                                <button class="ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="deleteDeath(death.ID)"> Delete </button>
                                 <p><b>Killed by:</b> {{death.C_name}}</p>
                                 <p><b>In issue:</b> {{death.Issue}}</p>
                                 <p><b>Description:</b> {{death.Dsc}}</p>
@@ -60,7 +60,7 @@
                     <div class="ui text container">
                         <div class="ui fluid card" ng-repeat=" death in kills" ng-bind-html-unsafe="death.C_name">
                             <div class="content">
-                                <button class="ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="delete(death.ID)"> Delete </button>
+                                <button class="ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="deleteDeath(death.ID)"> Delete </button>
                                 <p><b>Killed by:</b> {{death.C_name}}</p>
                                 <p><b>In issue:</b> {{death.Issue}}</p>
                                 <p><b>Description:</b> {{death.Dsc}}</p>

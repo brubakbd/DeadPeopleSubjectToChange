@@ -23,8 +23,19 @@ angular.module('deadpeople')
         $scope.deaths = [];
         $scope.role = getRole() == 'admin';
 
+        $scope.goCreate = function(){
+            if($scope.role == 'admin'){
+                $state.go('create');
+            }
+        }
+
         $scope.delete = function(){
             DataService.deleteChar($scope.id, function(response){
+                console.log(response);
+            });
+        }
+        $scope.deleteDeath = function(kid){
+            DataService.deleteChar(kid, function(response){
                 console.log(response);
             });
         }

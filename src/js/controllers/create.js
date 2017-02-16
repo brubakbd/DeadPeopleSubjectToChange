@@ -10,6 +10,13 @@
 angular.module('deadpeople')
     .controller('CreateCtrl', ['$scope', '$state', 'DataService', function ($scope, $state, DataService) {
         $scope.response = '';
+
+        $scope.goCreate = function(){
+            if($scope.role == 'admin'){
+                $state.go('create');
+            }
+        }
+        
         var createPageSetup = function(){
             $('.menu .item')
                 .tab()

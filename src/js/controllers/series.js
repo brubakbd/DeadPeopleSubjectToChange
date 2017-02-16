@@ -16,6 +16,11 @@ angular.module('deadpeople')
         $scope.characters = [];
         $scope.role = getRole() == 'admin';
         
+        $scope.goCreate = function(){
+            if($scope.role == 'admin'){
+                $state.go('create');
+            }
+        }
         $scope.delete = function(){
             DataService.deleteSeries($scope.sname, function(response){
                 console.log(response);
