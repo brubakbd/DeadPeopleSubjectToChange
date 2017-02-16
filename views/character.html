@@ -21,23 +21,69 @@
     </div>
     <div class=vertical-spacer/>
     <div class=vertical-spacer/>
-    <h1>Deadpool</h1>
-    <h3>Wade Wilson</h3>
+    <div class="center">
+        <h1>{{pname}} AKA {{cname}}</h1>
+    </div>
+    <div class=vertical-half-spacer/>
+    <img class="ui medium centered image" src="{{imgurl}}">
+    <div class=vertical-half-spacer/>
+    <div class="center">
+        <h3>Publisher: {{pubname}}, Series: {{seriesName}}</h3>
+    </div>
     <div class="ui relaxed grid">
         <div class="row">
-            <img class="ui medium image" src="https://s-media-cache-ak0.pinimg.com/736x/bf/e6/4b/bfe64b2af2206edbc4075aab9f08550e.jpg">
-            <div class="column">
-                <div class="row">
-                    <p>universe</p>
-                </div>
-                <div class="row">
-                    <p>publisher</p>
-                </div>
-                <div class="row">
-                    <p>series</p>
+            
+            <div class="eight wide column">
+                <h2>Died</h2>
+                <div class="ui one cards">
+                    <div class="ui text container">
+                        <div class="ui fluid card" ng-repeat=" death in deaths" ng-bind-html-unsafe="death.C_name">
+                            <div class="content">
+                                <p><b>Killed by:</b> {{death.C_name}}</p>
+                                <p><b>In issue:</b> {{death.Issue}}</p>
+                                <p><b>Description:</b> {{death.Dsc}}</p>
+                                <div class="extra">
+                                    <b>Rating:</b>
+                                    <div class="ui star rating" data-rating="{{death.rating}}" data-max-rating="5"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
                 </div>
             </div>
+
+            <div class="eight wide column">
+                <h2>Killed</h2>
+                <div class="ui one cards">
+                    <div class="ui text container">
+                        <div class="ui fluid card" ng-repeat=" death in kills" ng-bind-html-unsafe="death.C_name">
+                            <div class="content">
+                                <p><b>Killed by:</b> {{death.C_name}}</p>
+                                <p><b>In issue:</b> {{death.Issue}}</p>
+                                <p><b>Description:</b> {{death.Dsc}}</p>
+                                <div class="extra">
+                                    <b>Rating:</b>
+                                    <div class="ui star rating" data-rating="{{death.rating}}" data-max-rating="5"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
+    </div>
+    
+    <!--<div class="center">
+        <h1>Wade Wilson AKA Deadpool</h1>
+    </div>
+    <div class=vertical-half-spacer/>
+    <img class="ui medium centered image" src="https://s-media-cache-ak0.pinimg.com/736x/bf/e6/4b/bfe64b2af2206edbc4075aab9f08550e.jpg">
+    <div class=vertical-half-spacer/>
+    <div class="center">
+        <h3>Publisher: pubName, Universe: uniName, Series: sName</h3>
+    </div>
+    <div class="ui relaxed grid">
         <div class="row">
             
             <div class="eight wide column">
@@ -90,7 +136,7 @@
             </div>
             
         </div>
-    </div>
+    </div>-->
     
     
 </div>

@@ -13,17 +13,21 @@ angular.module('deadpeople')
         $scope.uname = '';
         $scope.pname = '';
         $scope.imgurl = '';
+        $scope.characters = [];
 
         var seriesSetup = function(){
             console.log($stateParams.name);
 
-            DataService.search(fields.searchTerm, 'series', function (response) {
+            DataService.search($stateParams.name, 'series', function (response) {
                             console.log('set response to '+response);
                             $scope.uname = response[0].U_name;
                             $scope.sname = response[0].S_name;
-                            $scope.pname = response[0].p_name;
-                            $scope.imgurl = response[0].Img;
+                            $scope.pname = response[0].P_name;
+                            $scope.imgurl = response[0].Img_URL;
                         });
+            DataService.search($stateParams.name, 'charBySeries', function(response){
+                $scope.characters = response;
+            });
 
             
         }

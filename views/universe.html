@@ -42,11 +42,16 @@
         <h4>{{ size }}</h4>
         <h4>{{ loc }}</h4>
     </div>
-    <ul>
-        <li>Some series</li>
-        <li>Another series</li>
-        <li>That one series</li>
-    </ul>
+    <div class="ui link cards">
+        <div class="card" ng-repeat=" series in serieses" ng-bind-html-unsafe="series.S_name">
+            <div class="image">
+                <img src="{{series.imgurl}}" title="" style="">
+            </div>
+            <div class="content">
+                <div class="header">{{series.S_name}}</div>
+            </div>
+        </div>
+    </div>
 
 
 </div>

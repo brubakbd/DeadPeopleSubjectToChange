@@ -39,9 +39,14 @@
         <h4>{{ uname }}</h4>
         <h4>{{ pname }}</h4>
     </div>
-    <ul>
-        <li>Spider-Man</li>
-        <li>Another dude</li>
-        <li>That one guy</li>
-    </ul>
+    <div class="ui link cards">
+        <div class="card" ng-repeat=" character in characters" ng-bind-html-unsafe="character.C_name">
+            <div class="image">
+                <img src="{{character.imgurl}}" title="" style="">
+            </div>
+            <div class="content">
+                <div class="header">{{character.C_name}}</div>
+            </div>
+        </div>
+    </div>
 </div>

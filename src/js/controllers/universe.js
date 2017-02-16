@@ -14,18 +14,22 @@ angular.module('deadpeople')
         $scope.pub = '';
         $scope.size = '';
         $scope.loc = '';
+        $scope.serieses = [];
 
         var universeSetup = function(){
             console.log($stateParams.name);
 
-            DataService.search(fields.searchTerm, 'universe', function (response) {
+            DataService.search($stateParams.name, 'universe', function (response) {
                             console.log('set response to '+response);
                             $scope.name = response[0].U_name;
                             $scope.pub = response[0].P_name;
                             $scope.size = response[0].Size;
                             $scope.loc = response[0].Location;
-                            $scope.imgurl = response[0].Img;
+                            $scope.imgurl = response[0].Img_URL;
                         });
+            DataService.search($stateParams.name, 'charBySeries', function(response){
+                $scope.serieses = response;
+            });
 
             
         }

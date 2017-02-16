@@ -9,20 +9,20 @@
  */
 angular.module('deadpeople')
     .controller('PublishersCtrl', ['$scope', '$state', function ($scope, $state) {
-        $scope.sname = '';
-        $scope.uname = '';
+        $scope.histNames = '';
         $scope.pname = '';
         $scope.imgurl = '';
+        $scope.serieses = [];
+        $scope.universes = [];
 
         var pubSetup = function(){
             console.log($stateParams.name);
 
-            DataService.search(fields.searchTerm, 'series', function (response) {
+            DataService.search($stateParams.name, 'series', function (response) {
                             console.log('set response to '+response);
-                            $scope.uname = response[0].U_name;
-                            $scope.sname = response[0].S_name;
                             $scope.pname = response[0].p_name;
-                            $scope.imgurl = response[0].Img;
+                            $scope.imgurl = response[0].Img_URL;
+                            $scope.histName = response[0].H_name;
                         });
 
             

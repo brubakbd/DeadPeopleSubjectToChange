@@ -21,7 +21,7 @@
     </div>
     <div class=vertical-spacer/>
     <div class=vertical-spacer/>
-    <div class="center">
+    <!--<div class="center">
         <h1>DC Comics</h1>
         <img class="ui centered medium image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/DC_Comics_logo.svg/2000px-DC_Comics_logo.svg.png">
         <h4>Historical names</h4>
@@ -44,6 +44,32 @@
                     <li>Another universe</li>
                     <li>That one universe</li>
                 </ul>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="center">
+        <h1>{{ pname }}</h1>
+        <img class="ui centered medium image" src= "{{ imgurl }}">
+        <h4>{{ histNames }}</h4>
+    </div>
+    <div class="ui link cards">
+        <div class="card" ng-repeat=" series in serieses" ng-bind-html-unsafe="series.S_name">
+            <div class="image">
+                <img src="{{series.imgurl}}" title="" style="">
+            </div>
+            <div class="content">
+                <div class="header">{{series.S_name}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="ui link cards">
+        <div class="card" ng-repeat=" univeres in universes" ng-bind-html-unsafe="universe.U_name">
+            <div class="image">
+                <img src="{{universe.imgurl}}" title="" style="">
+            </div>
+            <div class="content">
+                <div class="header">{{universe.U_name}}</div>
             </div>
         </div>
     </div>
