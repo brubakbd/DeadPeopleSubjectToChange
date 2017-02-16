@@ -26,6 +26,7 @@
                 user = username;
                 $http.defaults.headers.common.Authorization = 'Bearer ' + data.data.access_token;
                 token = 'Bearer ' + data.data.access_token;
+                setRole(data.data.role);
                 callback(data.data.access_token);
             }, function errorCallback(response) {
                 console.log('error occured: ', response);

@@ -19,6 +19,18 @@ var clearTokens = function() {
     });
 };
 
+var setRole = function(role){
+    sessoinStorage.setItem('role', role);
+}
+
+var getRole = function(){
+    return sessionStorage.getItem('role');
+}
+
+var removeRole = function(){
+    sessionStorage.removeItem('role');
+}
+
 var hasAccess = function() {
     return true;
     var token = getToken('auth-token');

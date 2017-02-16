@@ -21,6 +21,13 @@ angular.module('deadpeople')
         $scope.seriesname = '';
         $scope.kills = [];
         $scope.deaths = [];
+        $scope.role = getRole() == 'admin';
+
+        $scope.delete() = function(){
+            DataService.deleteChar($scope.id, function(response){
+                console.log(response);
+            });
+        }
 
         var characterSetup = function(){
             console.log($stateParams.id);

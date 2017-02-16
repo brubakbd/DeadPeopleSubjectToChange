@@ -14,6 +14,13 @@ angular.module('deadpeople')
         $scope.imgurl = '';
         $scope.serieses = [];
         $scope.universes = [];
+        $scope.role = getRole()=='admin';
+
+        $scope.delete() = function(){
+            DataService.deletePublisher($scope.pname, function(response){
+                console.log(response);
+            });
+        }
 
         var pubSetup = function(){
             console.log($stateParams.name);
