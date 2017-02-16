@@ -8,7 +8,7 @@
  * Controller of the deadpeople
  */
 angular.module('deadpeople')
-    .controller('SeriesCtrl', ['$scope', '$state', 'DataService', function ($scope, $state, DataService) {
+    .controller('SeriesCtrl', ['$scope', '$state', 'DataService', '$stateParams', function ($scope, $state, DataService, $stateParams) {
         $scope.sname = '';
         $scope.uname = '';
         $scope.pname = '';

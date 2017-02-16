@@ -21,12 +21,14 @@
     </div>
     <div class=vertical-spacer/>
     <div class=vertical-spacer/>
+    <h3> {{response}}</h3>
     <div class="ui top attached tabular menu">
         <a class="item active" data-tab="character">Character</a>
         <a class="item" data-tab="series">Series</a>
         <a class="item" data-tab="universe">Universe</a>
         <a class="item" data-tab="publisher">Publisher</a>
         <a class="item" data-tab="death">Death</a>
+        <a class="item" data-tab="charSeries">CharSeries</a>
     </div>
     <div class="ui bottom attached tab segment active" data-tab="character">
         <form class="ui form" id="charForm">
@@ -42,6 +44,10 @@
                 <label>Series</label>
                 <input type="text" placeholder="Series" name="sname">
             </div>
+            <div class="field">
+                <label>Image URL</label>
+                <input type="text" placeholder="Image URL" name="img">
+            </div>
             <button class="ui button" type="submit">Create</button>
         </form>
     </div>
@@ -55,6 +61,14 @@
                 <label>Universe</label>
                 <input type="text" placeholder="Universe" name="uname">
             </div>    
+            <div class="field">
+                <label>Publisher</label>
+                <input type="text" placeholder="Publisher" name="pname">
+            </div>    
+            <div class="field">
+                <label>Image URL</label>
+                <input type="text" placeholder="Image URL" name="img">
+            </div>
             <button class="ui button" type="submit">Create</button>        
         </form>
     </div>
@@ -76,6 +90,10 @@
                 <label>Location</label>
                 <input type="text" placeholder="Locatoin" name="location">
             </div>
+            <div class="field">
+                <label>Image URL</label>
+                <input type="text" placeholder="Image URL" name="img">
+            </div>
             <button class="ui button" type="submit">Create</button>
         </form>
     </div>
@@ -88,6 +106,10 @@
             <div class="field">
                 <label>Historical Names(Comma separated)</label>
                 <input type="text" placeholder="Historical Names" name="histNames">
+            </div>
+            <div class="field">
+                <label>Image URL</label>
+                <input type="text" placeholder="Image URL" name="img">
             </div>
             <button class="ui button" type="submit">Create</button>
         </form>
@@ -111,6 +133,19 @@
                 <input type="text" placeholder="Issue Number" name="issNum">
             </div>
             <button class="ui button" type="submit">Create</button>
-        </formdiv>
+        </form>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="charSeries">
+        <form class="ui form" id="charSeriesForm">        
+            <div class="field">
+                <label>Character</label>
+                <input type="text" placeholder="Character" name="char">
+            </div>
+            <div class="field">
+                <label>Series</label>
+                <input type="text" placeholder="Series" name="series">
+            </div>
+            <button class="ui button" type="submit">Create</button>
+        </form>
     </div>
 </div>

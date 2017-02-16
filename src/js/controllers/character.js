@@ -8,7 +8,7 @@
  * Controller of the deadpeople
  */
 angular.module('deadpeople')
-    .controller('CharacterCtrl', ['$scope', '$state','$stateParams', function ($scope, $state, $stateParams) {
+    .controller('CharacterCtrl', ['$scope', '$state','$stateParams', 'DataService', function ($scope, $state, $stateParams, DataService) {
         $('.ui.rating')
             .rating()
         ;

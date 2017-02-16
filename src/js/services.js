@@ -70,8 +70,8 @@
             });
         };
 
-        self.createChar = function(Pname, Cname, callback){
-            var pkt = {P_name:Pname, C_name:Cname, type:'cape'};
+        self.createChar = function(Pname, Cname,img, callback){
+            var pkt = {P_name:Pname, C_name:Cname, Img_URL:img, type:'cape'};
             $http({
                 method: 'GET',
                 url: host + 'create',
@@ -84,8 +84,8 @@
                 callback(response.data);
             });
         };
-        self.createSeries = function(Sname, Uname, Pname, callback){
-            var pkt = {S_name:Sname, U_name:Uname, P_name:Pname, type:'series'};
+        self.createSeries = function(Sname, Uname, Pname, img, callback){
+            var pkt = {S_name:Sname, U_name:Uname, P_name:Pname, Img_URL:img, type:'series'};
             $http({
                 method: 'GET',
                 url: host + 'create',
@@ -98,8 +98,8 @@
                 callback(response.data);
             });
         };
-        self.createUniverse = function(Uname, size, Pname, location, callback){
-            var pkt = {U_name:Uname, Size:size, P_name:Pname, Location:location, type:'universe'};
+        self.createUniverse = function(Uname, size, Pname, location, img, callback){
+            var pkt = {U_name:Uname, Size:size, P_name:Pname, Location:location, Img_URL:img, type:'universe'};
             $http({
                 method: 'GET',
                 url: host + 'create',
@@ -112,8 +112,8 @@
                 callback(response.data);
             });
         };
-        self.createPublisher = function(Pname, Hname, callback){
-            var pkt = {P_name:Pname, H_name:Hname, type:'publisher'};
+        self.createPublisher = function(Pname, Hname, img, callback){
+            var pkt = {P_name:Pname, H_name:Hname, Img_URL:img, type:'publisher'};
             $http({
                 method: 'GET',
                 url: host + 'create',
@@ -126,7 +126,7 @@
                 callback(response.data);
             });
         };
-        self.createDeath = function(KillerName, KilledName, callback){
+        self.createDeath = function(KillerName, KilledName, img, iss, desc, callback){
             var rName ='';
             search(KillerName, 'cape',function(responseR){
                 search(KilledName, 'cape',function(responseD){
@@ -153,6 +153,20 @@
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': "application/json"
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        };
+        self.createCharSeries = function(sname, cid, callback){
+            var pkt = {S_name:sname, C_ID:cid, type:'charSeries'};
+            $http({
+                method: 'GET',
+                url: host + 'create',
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
                 }
             }).then(function(response){
                 callback(response.data);

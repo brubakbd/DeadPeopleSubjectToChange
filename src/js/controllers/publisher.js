@@ -8,7 +8,7 @@
  * Controller of the deadpeople
  */
 angular.module('deadpeople')
-    .controller('PublishersCtrl', ['$scope', '$state', function ($scope, $state) {
+    .controller('PublishersCtrl', ['$scope', '$state', 'DataService', '$stateParams', function ($scope, $state, DataService, $stateParams) {
         $scope.histNames = '';
         $scope.pname = '';
         $scope.imgurl = '';

@@ -8,7 +8,8 @@
  * Controller of the deadpeople
  */
 angular.module('deadpeople')
-    .controller('CreateCtrl', ['$scope', '$state', function ($scope, $state) {
+    .controller('CreateCtrl', ['$scope', '$state', 'DataService', function ($scope, $state, DataService) {
+        $scope.response = '';
         var createPageSetup = function(){
             $('.menu .item')
                 .tab()
@@ -35,12 +36,12 @@ angular.module('deadpeople')
                                 }
                             ]
                         },
-                        sname: {
-                            identifier: 'sname',
+                        img: {
+                            identifier: 'img',
                             rules: [
                                 {
                                     type: 'empty',
-                                    prompt: 'Please enter a series the character is in'
+                                    prompt: 'Please enter an img url'
                                 }
                             ]
                         }
@@ -50,6 +51,9 @@ angular.module('deadpeople')
                         if (event) {
                             event.preventDefault();
                         }
+                        DataService.createChar(pname,cname,img,function(response){
+                            $scope.response = 'Successfully created ' + cname;
+                        });
                         return false;
                     },
                     onFailure: function (formErrors, fields) {
@@ -78,6 +82,24 @@ angular.module('deadpeople')
                                     prompt: 'Please enter a universe the series is in'
                                 }
                             ]
+                        },
+                        pname: {
+                            identifier: 'pname',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter the publisher for the series'
+                                }
+                            ]
+                        },
+                        img: {
+                            identifier: 'img',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter an img url'
+                                }
+                            ]
                         }
                     },
                     inline: true,
@@ -85,6 +107,9 @@ angular.module('deadpeople')
                         if (event) {
                             event.preventDefault();
                         }
+                        DataService.createSeries(sname,uname,pname,img,function(response){
+                            $scope.response = 'Successfully created ' + sname;
+                        });
                         return false;
                     },
                     onFailure: function (formErrors, fields) {
@@ -131,6 +156,15 @@ angular.module('deadpeople')
                                     prompt: 'Please enter the location of the universe'
                                 }
                             ]
+                        },
+                        img: {
+                            identifier: 'img',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter an img url'
+                                }
+                            ]
                         }
                     },
                     inline: true,
@@ -138,6 +172,9 @@ angular.module('deadpeople')
                         if (event) {
                             event.preventDefault();
                         }
+                        DataService.createUniverse(uname,size,pname,location,img,function(response){
+                            $scope.response = 'Successfully created ' + uname;
+                        });
                         return false;
                     },
                     onFailure: function (formErrors, fields) {
@@ -157,6 +194,15 @@ angular.module('deadpeople')
                                     prompt: 'Please enter a publisher name'
                                 }
                             ]
+                        },
+                        img: {
+                            identifier: 'img',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter an img url'
+                                }
+                            ]
                         }
                     },
                     inline: true,
@@ -164,6 +210,47 @@ angular.module('deadpeople')
                         if (event) {
                             event.preventDefault();
                         }
+                        DataService.createPublisher(pname,histNames,img,function(response){
+                            $scope.response = 'Successfully created ' + pname;
+                        });
+                        return false;
+                    },
+                    onFailure: function (formErrors, fields) {
+                        return;
+
+                    }
+
+                });
+            $('#charSeriesForm')
+                .form({
+                    fields: {
+                        char: {
+                            identifier: 'char',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter a publisher name'
+                                }
+                            ]
+                        },
+                        series: {
+                            identifier: 'series',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter a publisher name'
+                                }
+                            ]
+                        }
+                    },
+                    inline: true,
+                    onSuccess: function (event, fields) {
+                        if (event) {
+                            event.preventDefault();
+                        }
+                        DataService.createCharSeries(char,series,function(response){
+                            $scope.response = 'Successfully created ' + char +'-' + series + ' relationship';
+                        });
                         return false;
                     },
                     onFailure: function (formErrors, fields) {
@@ -175,15 +262,6 @@ angular.module('deadpeople')
             $('#deathForm')
                 .form({
                     fields: {
-                        killerName: {
-                            identifier: 'killerName',
-                            rules: [
-                                {
-                                    type: 'empty',
-                                    prompt: 'Please enter the killer'
-                                }
-                            ]
-                        },
                         killedName: {
                             identifier: 'killedName',
                             rules: [
@@ -217,6 +295,9 @@ angular.module('deadpeople')
                         if (event) {
                             event.preventDefault();
                         }
+                        DataService.createDeath(killerName,killedName,img,issNum,desc,function(response){
+                            $scope.response = 'Successfully created ' + cname;
+                        });
                         return false;
                     },
                     onFailure: function (formErrors, fields) {
