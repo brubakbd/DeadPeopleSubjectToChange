@@ -32,7 +32,6 @@ var removeRole = function(){
 }
 
 var hasAccess = function() {
-    return true;
     var token = getToken('auth-token');
     if (!token) {
         return false;

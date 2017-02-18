@@ -15,7 +15,6 @@ angular.module('deadpeople')
         $scope.seriesList = [];
         $scope.universeList = [];
         $scope.role = getRole()=='admin';
-        $scope.role = true;
 
         $scope.goCreate = function(){
             if($scope.role){
