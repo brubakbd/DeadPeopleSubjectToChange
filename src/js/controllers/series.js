@@ -31,6 +31,9 @@ angular.module('deadpeople')
             clearTokens();
             $state.go('home');
         }
+        $scope.update = function(){
+            $('#editSeries').modal('show');
+        }
         var seriesSetup = function(){
             console.log($stateParams.name);
 
@@ -44,6 +47,64 @@ angular.module('deadpeople')
             DataService.search($stateParams.name, 'charBySeries', function(response){
                 $scope.characters = response;
             });
+
+            $('#seriesUpdateForm')
+                .form({
+                    fields: {
+                        sname: {
+                            identifier: 'sname',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter a series name'
+                                }
+                            ]
+                        },
+                        uname: {
+                            identifier: 'uname',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter a universe the series is in'
+                                }
+                            ]
+                        },
+                        pname: {
+                            identifier: 'pname',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter the publisher for the series'
+                                }
+                            ]
+                        },
+                        img: {
+                            identifier: 'img',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter an img url'
+                                }
+                            ]
+                        }
+                    },
+                    inline: true,
+                    onSuccess: function (event, fields) {
+                        if (event) {
+                            event.preventDefault();
+                        }
+                        DataService.updateSeries($scope.sname, fields.sname,fields.uname,fields.pname,fields.img,function(response){
+                            $('#editSeries').modal('hide');
+                            seriesSetup();
+                        });
+                        return false;
+                    },
+                    onFailure: function (formErrors, fields) {
+                        return;
+
+                    }
+
+                });
 
             
         }

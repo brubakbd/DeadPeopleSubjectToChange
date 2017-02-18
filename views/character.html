@@ -21,7 +21,13 @@
     </div>
     <div class=vertical-spacer/>
     <div class=vertical-spacer/>
-    <button class="ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="delete()"> Delete </button>
+    <div class=vertical-half-spacer/>
+    <div class ="ui relaxed grid">
+        <div class ="right floated left aligned six wide column">
+            <button class="ui button" ng-if="role" ng-click="delete()"> Delete </button>
+            <button class="ui button" ng-if="role" ng-click="updateChar()"> Update </button>
+        </div>
+    </div>
     <div class="center">
         <h1>{{pname}} AKA {{cname}}</h1>
     </div>
@@ -40,7 +46,12 @@
                     <div class="ui text container">
                         <div class="ui fluid card" ng-repeat=" death in deaths" ng-bind-html-unsafe="death.C_name">
                             <div class="content">
-                                <button class="mini ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="deleteDeath(death.Kill_ID)"> Delete </button>
+                                <div class ="ui relaxed grid">
+                                    <div class ="right floated left aligned six wide column">
+                                        <button class="ui button" ng-if="role" ng-click="deleteDeath(death.Kill_ID)"> Delete </button>
+                                        <button class="ui button" ng-if="role" ng-click="updateDeath(death.Kill_ID,death.Killer_Name,death.Issue,death.dsc,'death')"> Update </button>
+                                    </div>
+                                </div>
                                 <p><b>Killed by:</b> {{death.Killer_Name}}</p>
                                 <p><b>In issue:</b> {{death.Issue}}</p>
                                 <p><b>Description:</b> {{death.dsc}}</p>
@@ -61,7 +72,12 @@
                     <div class="ui text container">
                         <div class="ui fluid card" ng-repeat=" death in kills" ng-bind-html-unsafe="death.C_name">
                             <div class="content">
-                                <button class="mini ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="deleteDeath(death.Kill_ID)"> Delete </button>
+                                <div class ="ui relaxed grid">
+                                    <div class ="right floated left aligned six wide column">
+                                        <button class="ui button" ng-if="role" ng-click="deleteDeath(death.Kill_ID)"> Delete </button>
+                                        <button class="ui button" ng-if="role" ng-click="updateDeath(death.Kill_ID,death.Killed_Name,death.Issue,death.dsc,'kill')"> Update </button>
+                                    </div>
+                                </div>
                                 <p><b>Killed:</b> {{death.Killed_Name}}</p>
                                 <p><b>In issue:</b> {{death.Issue}}</p>
                                 <p><b>Description:</b> {{death.dsc}}</p>
@@ -76,6 +92,57 @@
                 </div>
             </div>
             
+        </div>
+    </div>
+
+    <div class="ui modal" id="editChar">
+        <i class="close icon"></i>
+        <div class="header">
+            Update Character
+        </div>
+        <div class="content">
+            <form class="ui form" id="charUpdateForm">
+                <div class="field">
+                    <label>Personal Name</label>
+                    <input type="text" placeholder="Personal name" value="{{pname}}" name="pname">
+                </div>
+                <div class="field">
+                    <label>Cape Name</label>
+                    <input type="text" placeholder="Cape name" value="{{cname}}" name="cname">
+                </div>
+                <div class="field">
+                    <label>Image URL</label>
+                    <input type="text" placeholder="Image URL" value="{{imgurl}}" name="img">
+                </div>
+                <button class="ui button" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+    <div class="ui modal" id="editDeath">
+        <i class="close icon"></i>
+        <div class="header">
+            Update death
+        </div>
+        <div class="content">
+            <form class="ui form" id="deathUpdateForm">        
+                <div class="field">
+                    <label>Killer</label>
+                    <input type="text" placeholder="Killer" value="{{killerName}}" name="killerName">
+                </div>
+                <div class="field">
+                    <label>Killee</label>
+                    <input type="text" placeholder="Killee" value="{{killedName}}" name="killedName">
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <input type="text" placeholder="Description" value="{{desc}}" name="desc">
+                </div>
+                <div class="field">
+                    <label>Issue Number</label>
+                    <input type="text" placeholder="Issue Number" value="{{iss}}" name="issNum">
+                </div>
+                <button class="ui button" type="submit">Update</button>
+            </form>
         </div>
     </div>
     

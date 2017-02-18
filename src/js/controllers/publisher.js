@@ -15,6 +15,7 @@ angular.module('deadpeople')
         $scope.seriesList = [];
         $scope.universeList = [];
         $scope.role = getRole()=='admin';
+        $scope.role = true;
 
         $scope.goCreate = function(){
             if($scope.role){
@@ -31,6 +32,9 @@ angular.module('deadpeople')
                 console.log(response);
                 $state.go('homepage');
             });
+        }
+        $scope.update = function(){
+            $('#editPublisher').modal('show');
         }
 
         var pubSetup = function(){
@@ -52,6 +56,46 @@ angular.module('deadpeople')
                 console.log(response);
                 $scope.universeList = response;
             });
+
+            $('#publisherUpdateForm')
+                .form({
+                    fields: {
+                        pname: {
+                            identifier: 'pname',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter a publisher name'
+                                }
+                            ]
+                        },
+                        img: {
+                            identifier: 'img',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter an img url'
+                                }
+                            ]
+                        }
+                    },
+                    inline: true,
+                    onSuccess: function (event, fields) {
+                        if (event) {
+                            event.preventDefault();
+                        }
+                        DataService.createPublisher($scope.pname,fields.pname,fields.histNames,fields.img,function(response){
+                            $('#editPublsisher').modal('hide');
+                            pubSetup();
+                        });
+                        return false;
+                    },
+                    onFailure: function (formErrors, fields) {
+                        return;
+
+                    }
+
+                });
 
             
         }

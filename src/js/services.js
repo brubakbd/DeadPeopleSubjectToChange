@@ -11,7 +11,8 @@
         var self = this;
 
         self.login = function (username, password, callback) {
-            var pkt = { username: username, password: CryptoJS.SHA1(password).toString()};
+            console.log(CryptoJS.SHA256("ab").toString());
+            var pkt = { username: username, password: CryptoJS.SHA256(password).toString()};
             console.log(pkt);
             $http({
                 method: 'POST',
@@ -53,6 +54,7 @@
                 setToken('auth-token', response.data.access_token);
                 $http.defaults.headers.common.Authorization = 'Bearer ' + response.data.access_token;
                 token = 'Bearer ' + response.data.access_token;
+                setRole('basic');
                 $state.go('homepage');
             }, function errorCallback(response) {
                 console.log('error occured: ', response);
@@ -250,6 +252,83 @@
             $http({
                 method: 'POST',
                 url: host + 'delete',
+                data: pkt,
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        };
+
+        
+        self.updateChar = function(id, Pname, Cname,img, callback){
+            var pkt = {ID:id, P_name:Pname, C_name:Cname, Img_URL:img, type:'cape'};
+            $http({
+                method: 'POST',
+                url: host + 'update',
+                data: pkt,
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        };
+        self.updateDeath = function(id, killerID, killedID, iss, desc, callback){
+            var pkt = {ID:id, Killer:killerID, Killed:killedID, diedinissue:iss, description:desc, type:'kills'};
+            $http({
+                method: 'POST',
+                url: host + 'update',
+                data: pkt,
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        };
+        self.updateSeries = function(oldName, newName, uname, pname, imgurl, callback){
+            var pkt = {old:oldName, new:newName, U_name:uname, P_name:pname, Img_URL:imgurl, type:'series'};
+            $http({
+                method: 'POST',
+                url: host + 'update',
+                data: pkt,
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        };
+        self.updateUniverse = function(oldName, newName, size, pname, location, imgurl, callback){
+            var pkt = {old:oldName, new:newName, size:size, P_name:pname, location:location, Img_URL:imgurl, type:'universe'};
+            $http({
+                method: 'POST',
+                url: host + 'update',
+                data: pkt,
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json",
+                    'Authorization': getToken('auth-token')
+                }
+            }).then(function(response){
+                callback(response.data);
+            });
+        };
+        self.updatePublisher = function(oldName, newName, hnames, imgurl, callback){
+            var pkt = {old:oldName, new:newName, H_name:hnames, Img_URL:imgurl, type:'publisher'};
+            $http({
+                method: 'POST',
+                url: host + 'update',
                 data: pkt,
                 headers: {
                     'Content-Type': "application/json",

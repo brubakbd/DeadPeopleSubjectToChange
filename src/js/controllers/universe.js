@@ -33,6 +33,9 @@ angular.module('deadpeople')
             clearTokens();
             $state.go('home');
         }
+        $scope.update = function(){
+            $('#editUniverse').modal('show');
+        }
 
         var universeSetup = function(){
             console.log($stateParams.name);
@@ -49,7 +52,72 @@ angular.module('deadpeople')
                 $scope.serieses = response;
             });
 
-            
+            $('#universeUpdateForm')
+                .form({
+                    fields: {
+                        uname: {
+                            identifier: 'uname',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter a universe name'
+                                }
+                            ]
+                        },
+                        pname: {
+                            identifier: 'pname',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter the universes publisher'
+                                }
+                            ]
+                        },
+                        size: {
+                            identifier: 'size',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter the size of the universe'
+                                }
+                            ]
+                        },
+                        location: {
+                            identifier: 'location',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter the location of the universe'
+                                }
+                            ]
+                        },
+                        img: {
+                            identifier: 'img',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter an img url'
+                                }
+                            ]
+                        }
+                    },
+                    inline: true,
+                    onSuccess: function (event, fields) {
+                        if (event) {
+                            event.preventDefault();
+                        }
+                        DataService.updateUniverse($scope.name,fields.uname,fields.size,fields.pname,fields.location,fields.img,function(response){
+                            $('#editUniverse').modal('hide');
+                            universeSetup();
+                        });
+                        return false;
+                    },
+                    onFailure: function (formErrors, fields) {
+                        return;
+
+                    }
+
+                });   
         }
 
         $scope.$on('$viewContentLoaded', function () {

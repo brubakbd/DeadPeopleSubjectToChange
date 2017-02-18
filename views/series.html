@@ -21,6 +21,7 @@
     </div>
     <div class=vertical-spacer/>
     <div class=vertical-spacer/>
+    <div class=vertical-half-spacer/>
     <!--<div class="center">
         <h1>Ultimate Spider-Man</h1>
         <img class="ui centered medium image" src="http://vignette1.wikia.nocookie.net/disney/images/c/c8/Ultimate_Spider-Man_(TV_series)_logo.svg.png/revision/latest?cb=20130803042752">
@@ -33,7 +34,12 @@
         <li>That one guy</li>
     </ul>-->
 
-    <button class="ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="delete()"> Delete </button>
+    <div class ="ui relaxed grid">
+        <div class ="right floated left aligned six wide column">
+            <button class="ui button" ng-if="role" ng-click="delete()"> Delete </button>
+            <button class="ui button" ng-if="role" ng-click="update()"> Update </button>
+        </div>
+    </div>
     <div class="center">
         <h1>{{ sname }}</h1>
         <img class="ui centered medium image" src="{{ imgurl }}">
@@ -47,6 +53,34 @@
             <div class="content">
                 <div class="header">{{character.C_name}}</div>
             </div>
+        </div>
+    </div>
+
+    <div class="ui modal" id="editSeries">
+        <i class="close icon"></i>
+        <div class="header">
+            Update series
+        </div>
+        <div class="content">
+            <form class="ui form" id="seriesUpdateForm">
+            <div class="field">
+                <label>Series</label>
+                <input type="text" placeholder="Series" value="{{sname}}" name="sname">
+            </div>
+            <div class="field">
+                <label>Universe</label>
+                <input type="text" placeholder="Universe" value="{{uname}}" name="uname">
+            </div>    
+            <div class="field">
+                <label>Publisher</label>
+                <input type="text" placeholder="Publisher" value="{{pname}}" name="pname">
+            </div>    
+            <div class="field">
+                <label>Image URL</label>
+                <input type="text" placeholder="Image URL" value="{{imgurl}}" name="img">
+            </div>
+            <button class="ui button" type="submit">Create</button>        
+        </form>
         </div>
     </div>
 </div>

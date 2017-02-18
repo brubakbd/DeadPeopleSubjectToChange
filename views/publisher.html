@@ -21,6 +21,7 @@
     </div>
     <div class=vertical-spacer/>
     <div class=vertical-spacer/>
+    <div class=vertical-half-spacer/>
     <!--<div class="center">
         <h1>DC Comics</h1>
         <img class="ui centered medium image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/DC_Comics_logo.svg/2000px-DC_Comics_logo.svg.png">
@@ -47,7 +48,12 @@
             </div>
         </div>
     </div>-->
-    <button class="ui button" ng-if="role" style="position: absolute; right: 0;" ng-click="delete()"> Delete </button>
+    <div class ="ui relaxed grid">
+        <div class ="right floated left aligned six wide column">
+            <button class="ui button" ng-if="role" ng-click="delete()"> Delete </button>
+            <button class="ui button" ng-if="role" ng-click="update()"> Update </button>
+        </div>
+    </div>
     <div class="center">
         <h1>{{ pname }}</h1>
         <img class="ui centered medium image" src= "{{ imgurl }}">
@@ -114,6 +120,30 @@
                 </div>
             </div>
             
+        </div>
+    </div>
+
+    <div class="ui modal" id="editPublisher">
+        <i class="close icon"></i>
+        <div class="header">
+            Update publisher
+        </div>
+        <div class="content">
+            <form class="ui form" id="publisherUpdateForm">        
+                <div class="field">
+                    <label>Publisher</label>
+                    <input type="text" placeholder="Publisher" vale="{{pname}}" name="pname">
+                </div>
+                <div class="field">
+                    <label>Historical Names(Comma separated)</label>
+                    <input type="text" placeholder="Historical Names" value="{{histNames}}" name="histNames">
+                </div>
+                <div class="field">
+                    <label>Image URL</label>
+                    <input type="text" placeholder="Image URL" value="{{imgurl}}" name="img">
+                </div>
+                <button class="ui button" type="submit">Create</button>
+            </form>
         </div>
     </div>
 </div>
