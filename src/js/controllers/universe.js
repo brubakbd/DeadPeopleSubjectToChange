@@ -108,6 +108,7 @@ angular.module('deadpeople')
                         }
                         DataService.updateUniverse($scope.name,fields.uname,fields.size,fields.pname,fields.location,fields.img,function(response){
                             $('#editUniverse').modal('hide');
+                            $stateParams.name = fields.uname;
                             universeSetup();
                         });
                         return false;

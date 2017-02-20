@@ -136,6 +136,7 @@ angular.module('deadpeople')
                         }
                         console.log(fields.pname+" "+fields.cname+ " "+fields.img);
                         $('#editChar').modal('hide');
+                        $stateParams.name=fields.cname;
                         characterSetup();
                         return false;
                     },

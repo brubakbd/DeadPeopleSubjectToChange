@@ -85,6 +85,7 @@ angular.module('deadpeople')
                         }
                         DataService.createPublisher($scope.pname,fields.pname,fields.histNames,fields.img,function(response){
                             $('#editPublsisher').modal('hide');
+                            $stateParams.name = fields.pname;
                             pubSetup();
                         });
                         return false;

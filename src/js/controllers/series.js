@@ -95,6 +95,7 @@ angular.module('deadpeople')
                         }
                         DataService.updateSeries($scope.sname, fields.sname,fields.uname,fields.pname,fields.img,function(response){
                             $('#editSeries').modal('hide');
+                            $stateParams.name = fields.sname;
                             seriesSetup();
                         });
                         return false;

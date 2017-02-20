@@ -47,9 +47,9 @@
                         <div class="ui fluid card" ng-repeat=" death in deaths" ng-bind-html-unsafe="death.C_name">
                             <div class="content">
                                 <div class ="ui relaxed grid">
-                                    <div class ="right floated left aligned six wide column">
-                                        <button class="ui button" ng-if="role" ng-click="deleteDeath(death.Kill_ID)"> Delete </button>
-                                        <button class="ui button" ng-if="role" ng-click="updateDeath(death.Kill_ID,death.Killer_Name,death.Issue,death.dsc,'death')"> Update </button>
+                                    <div class ="right floated right aligned column">
+                                        <button class="ui mini button" ng-if="role" ng-click="deleteDeath(death.Kill_ID)"> Delete </button>
+                                        <button class="ui mini button" ng-if="role" ng-click="updateDeath(death.Kill_ID,death.Killer_Name,death.Issue,death.dsc,'death')"> Update </button>
                                     </div>
                                 </div>
                                 <p><b>Killed by:</b> {{death.Killer_Name}}</p>
@@ -73,9 +73,9 @@
                         <div class="ui fluid card" ng-repeat=" death in kills" ng-bind-html-unsafe="death.C_name">
                             <div class="content">
                                 <div class ="ui relaxed grid">
-                                    <div class ="right floated left aligned six wide column">
-                                        <button class="ui button" ng-if="role" ng-click="deleteDeath(death.Kill_ID)"> Delete </button>
-                                        <button class="ui button" ng-if="role" ng-click="updateDeath(death.Kill_ID,death.Killed_Name,death.Issue,death.dsc,'kill')"> Update </button>
+                                    <div class ="right floated right aligned column">
+                                        <button class="ui mini button" ng-if="role" ng-click="deleteDeath(death.Kill_ID)"> Delete </button>
+                                        <button class="ui mini button" ng-if="role" ng-click="updateDeath(death.Kill_ID,death.Killed_Name,death.Issue,death.dsc,'kill')"> Update </button>
                                     </div>
                                 </div>
                                 <p><b>Killed:</b> {{death.Killed_Name}}</p>
