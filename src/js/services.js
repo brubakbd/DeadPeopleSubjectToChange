@@ -11,8 +11,7 @@
         var self = this;
 
         self.login = function (username, password, callback) {
-            console.log(CryptoJS.SHA256("ab").toString());
-            var pkt = { username: username, password: CryptoJS.SHA256(password).toString()};
+            var pkt = { username: username, password: CryptoJS.SHA256(password+username).toString()};
             console.log(pkt);
             $http({
                 method: 'POST',
@@ -38,9 +37,7 @@
         };
 
         self.newUser = function (username, pwd) {
-            console.log("asdfasdfadsf");
-            console.log(CryptoJS.SHA256(pwd).toString());
-            var pkt = { username: username, password: CryptoJS.SHA256(pwd).toString()};
+            var pkt = { username: username, password: CryptoJS.SHA256(pwd+username).toString()};
             console.log(pkt);
             $http({
                 method: 'POST',
